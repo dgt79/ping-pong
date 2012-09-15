@@ -4,6 +4,7 @@ import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandler
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
+import io.netty.handler.logging.LogLevel;
 
 import java.util.logging.Level
 import java.util.logging.Logger
@@ -24,6 +25,7 @@ public class ServerHandler extends ChannelInboundMessageHandlerAdapter<String> {
 	void messageReceived(ChannelHandlerContext ctx, String msg) {
 		String response
 		boolean close = false
+		logger.log(Level.INFO, "received:" + msg)
 
 		if (msg.length() == 0) {
 			response = "Please type something.\r\n"
